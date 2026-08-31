@@ -11,6 +11,7 @@ namespace QueuingForm
         private int x;
         public static string getNumberInQueue = "";
         public static Queue<string> CashierQueue;
+        public static string CurrentServingNumber = "";
         public CashierClass()
         {
             x = 10000;

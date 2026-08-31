@@ -13,6 +13,7 @@ namespace QueuingForm
 {
     public partial class CashierWindowQueueForm : Form
     {
+        public static string CurrentServingNumber = "";
         Timer timer = new Timer();
         public CashierWindowQueueForm()
         {
@@ -45,8 +46,22 @@ namespace QueuingForm
         {
             if (CashierClass.CashierQueue.Count > 0)
             {
-                CashierClass.CashierQueue.Dequeue();
+                string nextNumber = CashierClass.CashierQueue.Dequeue();
+
+                CashierWindowQueueForm.CurrentServingNumber = nextNumber;
             }
+        }
+
+        private void listCashierQueue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnServing_Click(object sender, EventArgs e)
+        {
+            CurrentlyServing servingForm = new CurrentlyServing();
+
+            servingForm.Show();
         }
     }
 }
